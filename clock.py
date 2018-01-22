@@ -1,17 +1,14 @@
 #a little digital clock program using pygame
 
 import sys, pygame, datetime
+
+
 pygame.init()
 
-size = width, height = 400, 240
-black = 0, 0, 0
-
-
-screen = pygame.display.set_mode(size)
-
-fontobj = pygame.font.Font(None, 50)
-
-
+size = width, height = 400, 240 #dimensions of screen surface
+black, blue = (0, 0, 0), (0, 0 ,255) # colors
+screen = pygame.display.set_mode(size) # create surface
+fontobj = pygame.font.Font(None, 45) # create font
 
 
 while 1:
@@ -19,10 +16,10 @@ while 1:
 		if event.type == pygame.QUIT: sys.exit()
 
 	screen.fill(black)
-
-	timeobj = datetime.datetime
-	ctime = timeobj.today()
-	texsur = fontobj.render(str(ctime), True, (0,0,255), None)
+	
+	ctime = str(datetime.datetime.today())
+	ctime = ctime[10:19]
+	texsur = fontobj.render(ctime, True, blue, None)
 
 	screen.blit(texsur, (1, height / 2))
 
